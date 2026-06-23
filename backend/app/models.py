@@ -5,18 +5,18 @@ class Customer(Base):
     __tablename__ = "customer"
 
     Custid = Column(String(10), primary_key=True)
-    Name = Column(String(50), nullable=True)
-    Mobile_No = Column(String(15), nullable=True)
-    Address = Column(String(100), nullable=True)
+    Name = Column(String(50), nullable=False)
+    Mobile_No = Column(String(15), nullable=False)
+    Address = Column(String(100), nullable=False)
     Email = Column(String(50), nullable=True)
 
 class Account(Base):
     __tablename__ = "account"
 
     Account_No = Column(String(10), primary_key=True)
-    Acc_Type = Column(String(20), nullable=True)
+    Acc_Type = Column(String(20), nullable=False)
     Balance = Column(Numeric(10, 2), nullable=True, default=0.00)
-    Custid = Column(String(10), ForeignKey("customer.Custid", ondelete="CASCADE"), nullable=True)
+    Custid = Column(String(10), ForeignKey("customer.Custid", ondelete="CASCADE"), nullable=False)
 
 class User(Base):
     __tablename__ = "users"
