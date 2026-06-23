@@ -67,8 +67,8 @@ class AccountBase(BaseModel):
     @field_validator("Acc_Type")
     @classmethod
     def validate_acc_type(cls, v: str) -> str:
-        if v not in ["Savings", "Checking"]:
-            raise ValueError("Acc_Type must be either 'Savings' or 'Checking'")
+        if v not in ["Savings", "Checking", "Current"]:
+            raise ValueError("Acc_Type must be 'Savings', 'Checking', or 'Current'")
         return v
 
 class AccountCreate(AccountBase):
@@ -82,8 +82,8 @@ class AccountUpdate(BaseModel):
     @field_validator("Acc_Type")
     @classmethod
     def validate_acc_type_opt(cls, v: Optional[str]) -> Optional[str]:
-        if v is not None and v not in ["Savings", "Checking"]:
-            raise ValueError("Acc_Type must be either 'Savings' or 'Checking'")
+        if v is not None and v not in ["Savings", "Checking", "Current"]:
+            raise ValueError("Acc_Type must be 'Savings', 'Checking', or 'Current'")
         return v
 
 class AccountOut(AccountBase):
